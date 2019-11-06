@@ -47,11 +47,12 @@ this.stomach = [];
 
 Person.prototype.eat = function() {
   this.someFood = this.stomach.push();
+  // if (this.stomach == this.someFood[9]) {this.someFood = null}
+  // if (this.stomach > [9]) {this.eat === null}
 }
 
 Person.prototype.poop = function() {
   this.someFood = this.stomach.pop();
-
 }
 
 Person.prototype.toString = function() {
@@ -80,14 +81,15 @@ function Car(model, milesPerGallon) {
   this.odometer = 0;
 }
 
-Car.prototype.fill = function(gallons) {
-  this.gallons = this.tank++;
+Car.prototype.fill = function() {
+  this.gallons = `${this.tank++}`;
 }
 
 Car.prototype.drive = function() {
-  // this.odometer = this.odometer++;
-  // this.tank = this.tank--;
-  return `${this.odometer++}, ${this.tank--}`
+  
+  this.fuel = `${this.odometer++}, ${this.tank--}`;
+
+  this.drive = function() {return `I ran out of fuel at ${this.odometer--} miles!` }
 }
 
 /*
@@ -108,14 +110,20 @@ function Baby(name, age, favoriteToy) {
   }
 }
 
+Baby.prototype = Object.create(Person.prototype);
+
+Baby.prototype.play = function() {
+  return this.play;
+}
+
 /* 
   TASK 4
 
   In your own words explain the four principles for the "this" keyword below:
-  1. Global Binding scope:
-  2. 
-  3. 
-  4. 
+  1. Global Binding
+  2. Implicit Binding
+  3. New Binding
+  4. Explicit Binding
 */
 
 
