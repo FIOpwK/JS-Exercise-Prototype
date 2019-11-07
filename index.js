@@ -46,12 +46,14 @@ this.stomach = [];
 }
 
 Person.prototype.eat = function(someFood) {
-  return this.stomach.push()
+  if (this.stomach.length < 10) { this.stomach.push(someFood);}
+    return this.stomach;
+
   
 }
 
-Person.prototype.poop = function(item) {
-  // return this.stomach;
+Person.prototype.poop = function() {
+  this.stomach = [];
 }
 
 Person.prototype.toString = function() {
@@ -80,13 +82,20 @@ function Car(model, milesPerGallon) {
   this.odometer = 0;
 }
 
-Car.prototype.fill = function() {
-  return `${this.tank++}`;
+Car.prototype.fill = function(gallons) {
+  return this.tank += gallons;
 }
 
-Car.prototype.drive = function() {
+Car.prototype.drive = function(distance) {
   
-  return `${this.tank--}, ${this.odometer++}`;
+  const gallons = distance / this.milesPerGallon;
+  if (this.tank >= gallons) {this.odometer += distance; this.tank -= gallons;} else {
+  const fuel = this.tank * this.milesPerGallon;
+  this.tank = 0;
+  this.odometer += fuel;
+
+  return `I ran out of fuel at ${this.odometer} miles`
+  }
 
  
 }
